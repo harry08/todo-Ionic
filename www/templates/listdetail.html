@@ -1,0 +1,23 @@
+<ion-view view-title="Todo List Details">
+  <ion-nav-buttons side="secondary">
+      <div class="buttons">
+        <button class="button" ng-click="cancelListEntryDetail()">Close</button>
+      </div>
+  </ion-nav-buttons>	
+  <ion-content>
+    <form id="editForm" name="editForm" ng-submit="submitListEntryDetail()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Name</span>
+          <input type="text" ng-model="listEntry.name" placeholder="Name of Todo list">
+        </label>  
+        <label class="item item-input">
+    		<textarea rows="10" ng-model="listEntry.description" placeholder="Note"></textarea>
+  		</label>  
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Save</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>		
+</ion-view>

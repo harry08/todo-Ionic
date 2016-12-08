@@ -1,0 +1,16 @@
+<ion-view view-title="Todo Lists">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="todoList in lists" href="#/app/listtodoitems/{{todoList._id}}" >
+        <h2>{{todoList.name}}
+        <span class="badge">{{todoList.itemsDue}}</span></h2>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="bar-stable">
+	<div class="buttons">
+		<button class="button icon ion-plus"
+		ng-click="addNewTodoList()"></button>
+	</div>
+  </ion-footer-bar>		
+</ion-view>

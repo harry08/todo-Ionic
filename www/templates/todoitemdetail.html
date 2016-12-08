@@ -1,0 +1,33 @@
+<ion-view view-title="Item Details">
+  <ion-nav-buttons side="secondary">
+      <div class="buttons">
+        <button class="button" ng-click="cancelTodoItemDetail()">Close</button>
+      </div>
+  </ion-nav-buttons>	
+  <ion-content>
+    <form id="editForm" name="editForm" ng-submit="submitTodoItemDetail()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Title</span>
+          <input type="text" ng-model="todoItem.title">
+        </label>  
+        <label class="item item-input">
+          <span class="input-label">Due Date</span>
+          <input type="date" ng-model="localData.dueDate">	
+        </label>
+		<label class="item item-input">
+    		<textarea rows="10" ng-model="todoItem.note" placeholder="Note"></textarea>
+  		</label>  
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Save</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+  <ion-footer-bar class="bar-stable">
+	<div class="buttons">
+		<button class="button button-icon icon ion-android-more-horizontal" ng-if="!isNew()"
+		ng-click="openTodoItemPopover($event)"></button>
+	</div>
+  </ion-footer-bar>		
+</ion-view>

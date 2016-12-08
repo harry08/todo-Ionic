@@ -1,0 +1,48 @@
+<ion-view view-title="Todo items">
+  <ion-nav-buttons side="secondary">
+      <div class="buttons">
+        <button class="button button-icon icon ion-ios-minus-outline"
+          ng-click="toggleDelete()"></button>
+      </div>
+  </ion-nav-buttons>	
+  <ion-content>
+    <ion-list show-delete="shouldShowDelete"> 
+      <ion-item ng-repeat="todoItem in todoItems | filter: {done: false}" ng-click="showTodoItemDetails(todoItem)">
+		  <ion-delete-button class="ion-minus-circled"
+        	ng-click="deleteTodoItem(todoItem)">
+          </ion-delete-button>
+		  
+		  <label class="checkbox">
+			<input type="checkbox" ng-change="toggleDone(todoItem); $event.stopPropagation();" ng-model="todoItem.done"> 
+     	  </label>
+		  {{ todoItem.title }}
+      </ion-item>	 
+    </ion-list>	
+	
+    <button class="button button-small button-block button-positive" ng-click="toggleShowDoneItems()" ng-if="!isVirtualList()" >{{buttonTitle}}</button>
+	
+    <!-- List with done items  -->
+	<ion-list ng-if="shouldShowListDoneItems()" show-delete="shouldShowDelete"> 
+      <ion-item ng-repeat="todoItem in todoItems | filter: {done: true}" ng-click="showTodoItemDetails(todoItem)">
+		  <ion-delete-button class="ion-minus-circled"
+        	ng-click="deleteTodoItem(todoItem)">
+          </ion-delete-button>
+		  
+		  <label class="checkbox">
+        	<input type="checkbox" ng-change="toggleDone(todoItem); $event.stopPropagation();" ng-model="todoItem.done">
+     	  </label>
+		 {{ todoItem.title }}
+      </ion-item>	 
+    </ion-list>	  
+  </ion-content>
+  <ion-footer-bar class="bar-stable">
+	<div class="buttons">
+		<button class="button icon ion-plus"
+		ng-click="addNewTodoItem(listEntry)"></button>
+	</div>
+	<div class="buttons">
+		<button class="button button-icon icon ion-android-more-horizontal" ng-if="!isNew()"
+		ng-click="openTodoListPopover($event)"></button>
+	</div>  
+  </ion-footer-bar>		
+</ion-view>
